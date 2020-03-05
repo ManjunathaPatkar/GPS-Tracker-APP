@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "23923666254",
+    "firebase_url": "https://gpsmini-db5a1.firebaseio.com",
+    "project_id": "gpsmini-db5a1",
+    "storage_bucket": "gpsmini-db5a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23923666254:android:f640029ba6bd665cb0021f",
+        "android_client_info": {
+          "package_name": "com.example.gps_mini_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23923666254-hqadks3djohkiocomur9ep1t3cg4ng74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6SFuZkEgFtVls36J86ZTBydnnnWUA2KY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23923666254-hqadks3djohkiocomur9ep1t3cg4ng74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

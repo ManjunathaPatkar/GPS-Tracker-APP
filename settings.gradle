@@ -1,0 +1,2 @@
+rootProject.name='GPS_mini_project'
+include ':app'
