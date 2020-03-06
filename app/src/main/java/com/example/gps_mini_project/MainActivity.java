@@ -1,20 +1,26 @@
 package com.example.gps_mini_project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.karan.churi.PermissionManager.PermissionManager;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseUser user;
+    PermissionManager manager;
 
     Button signUP,signIn;
     @Override
@@ -26,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         if(user==null)
         {
             setContentView(R.layout.activity_main);
+            manager=new PermissionManager() {};
+            manager.checkAndRequestPermissions(this);
+
         }
         else
         {
@@ -49,5 +58,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+        }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        manager.checkResult(requestCode,permissions,grantResults);
+        ArrayList<String> denied_permission=manager.getStatus().get(0).denied;
+        if(denied_permission.isEmpty())
+        {
+            Toast.makeText(getApplicationContext(),"Permisssion Enabled",Toast.LENGTH_LONG).show();
     }
+}
+
+
 }
