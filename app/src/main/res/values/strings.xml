@@ -2,7 +2,6 @@
     <string name="app_name">GPS_mini_project</string>
     <string name="name">Name</string>
     <string name="next">Next</string>
-    <string name="title_activity_my_navigation">MyNavigationActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -15,4 +14,6 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
+    <string name="title_activity_my_navigation">Map</string>
+    <string name="title_activity_user_location_main">UserLocationMainActivity</string>
 </resources>

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Intent i=new Intent(MainActivity.this,MyNavigationActivity.class);
+            Intent i=new Intent(MainActivity.this,UserLocationMainActivity.class);
             startActivity(i);
             finish();
         }

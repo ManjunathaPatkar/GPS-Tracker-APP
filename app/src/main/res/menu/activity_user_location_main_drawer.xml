@@ -18,13 +18,13 @@
 
             android:title="Joined CIrcle" />
         <item
-        android:id="@+id/nav_inviteMembers"
+            android:id="@+id/nav_inviteMembers"
 
-        android:title="Invite Members" />
+            android:title="Invite Members" />
         <item
-        android:id="@+id/nav_shareLocation"
+            android:id="@+id/nav_shareLocation"
 
-        android:title="Share Location(WhatsApp)" />
+            android:title="Share Location" />
 
         <item
             android:id="@+id/nav_signout"
@@ -32,3 +32,4 @@
             android:title="signOut" />
     </group>
 </menu>
+
