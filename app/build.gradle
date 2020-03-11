@@ -37,7 +37,6 @@ dependencies {
     implementation 'com.github.yalantis:ucrop:2.2.3'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'com.google.firebase:firebase-database:19.2.1'
-    
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.2.1'
     implementation 'androidx.navigation:navigation-ui:2.2.1'

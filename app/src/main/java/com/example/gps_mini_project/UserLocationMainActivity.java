@@ -95,7 +95,7 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.map);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
@@ -131,11 +131,13 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
 
         } else if (id == R.id.nav_signout) {
             FirebaseUser user = auth.getCurrentUser();
+            Toast.makeText(getApplicationContext(), "Sign Out", Toast.LENGTH_SHORT).show();
             if (user != null) {
                 auth.signOut();
-                finish();
+
                 Intent i = new Intent(UserLocationMainActivity.this, MainActivity.class);
                 startActivity(i);
+                finish();
             }
 
         }
@@ -146,17 +148,25 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        int id=item.getItemId();
-        //  if(id==)
-        return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == R.id.nav_signout) {
+            FirebaseUser user = auth.getCurrentUser();
+            Toast.makeText(getApplicationContext(), "Sign Out", Toast.LENGTH_SHORT).show();
+            if (user != null) {
+                auth.signOut();
+
+                Intent i = new Intent(UserLocationMainActivity.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+            //  if(id==)
+            return super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 
 
-
-
-
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
+        public void onConnected(@Nullable Bundle bundle) {
         new LocationRequest();
         request= LocationRequest.create();
     request.setInterval(1000);
