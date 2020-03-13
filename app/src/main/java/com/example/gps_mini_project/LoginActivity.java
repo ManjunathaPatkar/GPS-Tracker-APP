@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,10 +39,19 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
-                            finish();
-                            Intent i=new Intent(LoginActivity.this,UserLocationMainActivity.class);
-                            startActivity(i);
+
+                            FirebaseUser user=auth.getCurrentUser();
+                            if (user.isEmailVerified())
+                            {
+
+                                Intent i =new Intent(LoginActivity.this,UserLocationMainActivity.class);
+                                startActivity(i);
+                                finish();
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(),"Email is not verified yet",Toast.LENGTH_SHORT).show();
+                            }
 
                         }
                         else

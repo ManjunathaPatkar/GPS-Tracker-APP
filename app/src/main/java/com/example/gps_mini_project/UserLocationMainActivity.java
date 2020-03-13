@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -32,6 +33,11 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,8 +63,10 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
     GoogleApiClient client;
     LocationRequest request;
     LatLng latLng;
-
-
+    DatabaseReference databaseReference;
+    FirebaseUser user;
+    String uname,uemail;
+    TextView t1,t2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +74,7 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
         setContentView(R.layout.activity_user_location_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        user=auth.getCurrentUser();
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         auth=FirebaseAuth.getInstance();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -84,6 +92,28 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        View header=navigationView.getHeaderView(0);
+        t1=header.findViewById(R.id.title_text);
+        t2=header.findViewById(R.id.ttileemail);
+
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                uname=dataSnapshot.child(user.getUid()).child("name").getValue(String.class);
+                uemail=dataSnapshot.child(user.getUid()).child("email").getValue(String.class);
+                t1.setText(uname );
+                t2.setText(uemail);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -126,6 +156,11 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
         } else if (id == R.id.nav_signout) {
 
         } else if (id == R.id.nav_shareLocation) {
+            Intent i=new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_TEXT,"My Location is: "+" http://www.google.com/maps/@"+latLng.latitude+","+latLng.longitude+",17z");
+            startActivity(i.createChooser(i,"Share using: "));
+
 
         } else if (id == R.id.nav_inviteMembers) {
 

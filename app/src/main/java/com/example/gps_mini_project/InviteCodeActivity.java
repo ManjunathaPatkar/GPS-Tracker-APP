@@ -65,7 +65,13 @@ public class InviteCodeActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful())
                                             {
-                                                Toast.makeText(getApplicationContext(),"Registered successfully",Toast.LENGTH_SHORT).show();
+
+                                                sendVerificationEmail();
+                                                auth.signOut();
+                                                Intent i=new Intent(InviteCodeActivity.this,MainActivity.class);
+                                                startActivity(i);
+                                                finish();
+
                                             }
                                             else
                                             {
@@ -77,6 +83,24 @@ public class InviteCodeActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    public void sendVerificationEmail()
+    {
+        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful())
+                {
+                    Toast.makeText(getApplicationContext(),"Email sent for verification",Toast.LENGTH_SHORT).show();
+                    auth.signOut();
+                    finish();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Could not send Email",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }
