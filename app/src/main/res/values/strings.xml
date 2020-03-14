@@ -16,4 +16,6 @@
     <string name="home_second">Home Second</string>
     <string name="title_activity_my_navigation">Map</string>
     <string name="title_activity_user_location_main">UserLocationMainActivity</string>
+    <string name="enter_circle_code_to_join">Enter Circle Code to join</string>
+    <string name="submit">SUBMIT</string>
 </resources>

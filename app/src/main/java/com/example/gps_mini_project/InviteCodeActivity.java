@@ -56,7 +56,8 @@ public class InviteCodeActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isComplete())
                         {
-                            CreateUser createUser = new CreateUser(email,password,code,"false","na","na", name);
+                            user=auth.getCurrentUser();
+                            CreateUser createUser = new CreateUser(email,password,code,"false","na","na", name,user.getUid());
                             user = auth.getCurrentUser();
                             userId = user.getUid();
                             reference.child("users").child(userId).setValue(createUser)
@@ -67,7 +68,7 @@ public class InviteCodeActivity extends AppCompatActivity {
                                             {
 
                                                 sendVerificationEmail();
-                                              //  auth.signOut();
+                                                auth.signOut();
                                                 Intent i=new Intent(InviteCodeActivity.this,MainActivity.class);
                                                 startActivity(i);
                                                 //finish();
