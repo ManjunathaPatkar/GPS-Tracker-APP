@@ -57,8 +57,8 @@ import java.util.concurrent.TimeUnit;
 
 public class UserLocationMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener, LocationListener {
-     GoogleMap mMap;
-     AppBarConfiguration mAppBarConfiguration;
+    GoogleMap mMap;
+    AppBarConfiguration mAppBarConfiguration;
     FirebaseAuth auth;
     GoogleApiClient client;
     LocationRequest request;
@@ -202,18 +202,18 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
     }
 
 
-        public void onConnected(@Nullable Bundle bundle) {
+    public void onConnected(@Nullable Bundle bundle) {
         new LocationRequest();
         request= LocationRequest.create();
-    request.setInterval(1000);
-    request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        request.setInterval(1000);
+        request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-    if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
-    {
-        return;
-    }
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
+        {
+            return;
+        }
 
-    LocationServices.FusedLocationApi.requestLocationUpdates(client,request,this);
+        LocationServices.FusedLocationApi.requestLocationUpdates(client,request,this);
 
     }
 

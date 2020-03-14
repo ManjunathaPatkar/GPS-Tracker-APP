@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-           // Intent i=new Intent(MainActivity.this,UserLocationMainActivity.class);
-           // startActivity(i);
-            //finish();
+           Intent i=new Intent(MainActivity.this,UserLocationMainActivity.class);
+            startActivity(i);
+            finish();
         }
         signUP = findViewById(R.id.button2);
         signIn = findViewById(R.id.button3);

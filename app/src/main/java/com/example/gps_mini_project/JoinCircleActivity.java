@@ -43,7 +43,7 @@ public class JoinCircleActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Query query=databaseReference.orderByChild("circlecode").equalTo(pinview.getValue());
+                Query query=databaseReference.orderByChild("code").equalTo(pinview.getValue());
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
