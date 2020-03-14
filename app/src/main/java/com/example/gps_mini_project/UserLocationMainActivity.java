@@ -99,6 +99,8 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
         t2=header.findViewById(R.id.ttileemail);
 
         databaseReference= FirebaseDatabase.getInstance().getReference().child("users");
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -149,8 +151,10 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         int id = item.getItemId();
         if (id == R.id.nav_joinCircle) {
+            
 
         } else if (id == R.id.nav_myCircle) {
 
@@ -165,7 +169,7 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
 
         } else if (id == R.id.nav_inviteMembers) {
 
-        } else if (id == R.id.nav_signout) {
+        } else if (id == R.id.nav_signoutg) {
             FirebaseUser user = auth.getCurrentUser();
             Toast.makeText(getApplicationContext(), "Sign Out", Toast.LENGTH_SHORT).show();
             if (user != null) {
@@ -178,7 +182,7 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
 
         }
 
-        return false;
+        return true;
     }
 
     @Override

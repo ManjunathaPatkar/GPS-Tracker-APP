@@ -27,7 +27,7 @@
             android:title="Share Location" />
 
         <item
-            android:id="@+id/nav_signout"
+            android:id="@+id/nav_signoutg"
 
             android:title="signOut" />
     </group>
