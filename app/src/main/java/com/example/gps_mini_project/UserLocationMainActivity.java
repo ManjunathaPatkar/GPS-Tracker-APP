@@ -74,9 +74,10 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
         setContentView(R.layout.activity_user_location_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        user=auth.getCurrentUser();
+
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         auth=FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -97,7 +98,7 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
         t1=header.findViewById(R.id.title_text);
         t2=header.findViewById(R.id.ttileemail);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("users");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

@@ -67,10 +67,10 @@ public class InviteCodeActivity extends AppCompatActivity {
                                             {
 
                                                 sendVerificationEmail();
-                                                auth.signOut();
+                                              //  auth.signOut();
                                                 Intent i=new Intent(InviteCodeActivity.this,MainActivity.class);
                                                 startActivity(i);
-                                                finish();
+                                                //finish();
 
                                             }
                                             else
@@ -92,8 +92,9 @@ public class InviteCodeActivity extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
                     Toast.makeText(getApplicationContext(),"Email sent for verification",Toast.LENGTH_SHORT).show();
-                    auth.signOut();
                     finish();
+                    auth.signOut();
+                    //finish();
                 }
                 else
                 {
