@@ -35,7 +35,9 @@ public class MembersAdapter extends RecyclerView.Adapter <MembersAdapter.Members
     @Override
     public MembersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-       View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layput,parent,false);
+       View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout,parent,false);
+       MembersViewHolder membersViewHolder=new MembersViewHolder(v,c,namelist);
+       
 
         return null;
     }
@@ -43,22 +45,24 @@ public class MembersAdapter extends RecyclerView.Adapter <MembersAdapter.Members
     @Override
     public void onBindViewHolder(@NonNull MembersViewHolder holder, int position) {
 
+        CreateUser currentuser=namelist.get(position);
+        holder.t1.setText(currentuser.name);
+
     }
 
     public static class MembersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
 
         TextView t1;
-        View v;
+
         Context c;
         ArrayList<CreateUser> namearrayList;
         FirebaseAuth auth;
         FirebaseUser user;
 
 
-        public MembersViewHolder(@NonNull View itemView,View v, Context c,ArrayList<CreateUser> namearrayList) {
+        public MembersViewHolder(@NonNull View itemView, Context c,ArrayList<CreateUser> namearrayList) {
             super(itemView);
-            this.v=v;
             this.c=c;
             this.namearrayList=namearrayList;
             itemView.setOnClickListener(this);
@@ -67,6 +71,7 @@ public class MembersAdapter extends RecyclerView.Adapter <MembersAdapter.Members
             t1=itemView.findViewById(R.id.item_title);
 
         }
+
 
 
         @Override
