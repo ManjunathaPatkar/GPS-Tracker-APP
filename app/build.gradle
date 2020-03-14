@@ -49,5 +49,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.github.GoodieBag:PinView:v1.3'
-
+    //noinspection GradleCompatible
+    implementation 'com.android.support:cardview-v7:26.0.0-alpha1'
+    implementation 'com.android.support:support-annotations:28.0.0'
 }
