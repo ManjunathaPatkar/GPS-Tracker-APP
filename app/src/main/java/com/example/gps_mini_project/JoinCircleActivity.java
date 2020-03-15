@@ -38,7 +38,7 @@ public class JoinCircleActivity extends AppCompatActivity {
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
         databaseReference= FirebaseDatabase.getInstance().getReference().child("users");
-        currentReference= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+        currentReference= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("CircleMembers");
         currentUid=user.getUid();
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +66,17 @@ public class JoinCircleActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if(task.isSuccessful())
                                                 {
-                                                    Toast.makeText(JoinCircleActivity.this, "User Joined Circle Successfully", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(JoinCircleActivity.this, "User Joined MyCircle Successfully", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                currentReference.child(user.getUid()).setValue(circleJoin1)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful())
+                                                {
+                                                    Toast.makeText(JoinCircleActivity.this, "User Joined joinedCircle Successfully", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });

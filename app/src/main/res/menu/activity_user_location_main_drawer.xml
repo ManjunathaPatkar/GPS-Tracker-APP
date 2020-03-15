@@ -13,22 +13,22 @@
             android:id="@+id/nav_myCircle"
 
             android:title="My Circle" />
-        <item
-            android:id="@+id/nav_joinedCircle"
 
-            android:title="Joined CIrcle" />
+        <item
+            android:id="@+id/nav_shareLocation"
+
+            android:title="Share Location" />
         <item
             android:id="@+id/nav_inviteMembers"
 
             android:title="Invite Members" />
         <item
-            android:id="@+id/nav_shareLocation"
+            android:id="@+id/nav_contactus"
 
-            android:title="Share Location" />
-
+            android:title="Contact Us" />
         <item
             android:id="@+id/nav_signoutg"
 
-            android:title="signOut" />
+            android:title="Sign Out" />
     </group>
 </menu>

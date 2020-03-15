@@ -65,7 +65,7 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
     LatLng latLng;
     DatabaseReference databaseReference;
     FirebaseUser user;
-    String uname,uemail;
+    String uname,uemail,code;
     TextView t1,t2;
 
     @Override
@@ -107,6 +107,7 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 uname=dataSnapshot.child(user.getUid()).child("name").getValue(String.class);
                 uemail=dataSnapshot.child(user.getUid()).child("email").getValue(String.class);
+                code=dataSnapshot.child(user.getUid()).child("code").getValue(String.class);
                 t1.setText(uname );
                 t2.setText(uemail);
 
@@ -164,18 +165,35 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
             startActivity(i);
 
 
-        } else if (id == R.id.nav_signout) {
+        }
 
-        } else if (id == R.id.nav_shareLocation) {
-            Intent i=new Intent(Intent.ACTION_SEND);
+         else if (id == R.id.nav_shareLocation) {
+          /*  Intent i=new Intent(Intent.ACTION_SEND);
             i.setType("text/plain");
             i.putExtra(Intent.EXTRA_TEXT,"My Location is: "+" http://www.google.com/maps/@"+latLng.latitude+","+latLng.longitude+",17z");
+            startActivity(i.createChooser(i,"Share using: "));*/
+            String uri = "http://maps.google.com/maps/?q=" +latLng.latitude+","+latLng.longitude;
+
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String ShareSub = "Here is my location";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ShareSub);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, uri);
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
+
+        }
+
+         else if (id == R.id.nav_inviteMembers) {
+
+            Intent i=new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_TEXT,"Check Out this GPS Tracker.I use it to track my family.To join me use this Code: "+code);
             startActivity(i.createChooser(i,"Share using: "));
 
+        }
 
-        } else if (id == R.id.nav_inviteMembers) {
-
-        } else if (id == R.id.nav_signoutg) {
+         else if (id == R.id.nav_signoutg) {
             FirebaseUser user = auth.getCurrentUser();
             Toast.makeText(getApplicationContext(), "Sign Out", Toast.LENGTH_SHORT).show();
             if (user != null) {
