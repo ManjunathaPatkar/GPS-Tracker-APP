@@ -34,7 +34,7 @@ public class MyCircleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_circle);
-
+        Toast.makeText(getApplicationContext(),"Inside on create",Toast.LENGTH_SHORT).show();
         recyclerView=(RecyclerView)findViewById(R.id.irecyleid);
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
@@ -42,17 +42,20 @@ public class MyCircleActivity extends AppCompatActivity {
         layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        userreference= FirebaseDatabase.getInstance().getReference().child("Users");
-        reference=FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid()).child("Circlemembers");
+        userreference= FirebaseDatabase.getInstance().getReference().child("users");
+        Toast.makeText(getApplicationContext(),"after user reference",Toast.LENGTH_SHORT).show();
+        reference=FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid()).child("CircleMembers");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 namelist.clear();
+                //Toast.makeText(getApplicationContext(),"before checking data is there",Toast.LENGTH_SHORT).show();
                 if(dataSnapshot.exists())
                 {
+                    Toast.makeText(getApplicationContext(),"data is there",Toast.LENGTH_SHORT).show();
                     for (DataSnapshot dss: dataSnapshot.getChildren())
                     {
-                        Circlememeberid=dss.child("Circlememeberid").getValue(String.class);
+                        Circlememeberid=dss.child("circlemember").getValue(String.class);
                         userreference.child(Circlememeberid)
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
@@ -69,6 +72,10 @@ public class MyCircleActivity extends AppCompatActivity {
                                     }
                                 });
                     }
+                }
+                else
+                {
+                    Toast.makeText(MyCircleActivity.this, "no data", Toast.LENGTH_SHORT).show();
                 }
             }
 

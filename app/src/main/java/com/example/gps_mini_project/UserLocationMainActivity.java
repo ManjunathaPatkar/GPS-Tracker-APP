@@ -154,9 +154,15 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
 
         int id = item.getItemId();
         if (id == R.id.nav_joinCircle) {
-            
+            Intent i=new Intent(UserLocationMainActivity.this,JoinCircleActivity.class);
+            startActivity(i);
+            //finish();
+
 
         } else if (id == R.id.nav_myCircle) {
+            Intent i=new Intent(UserLocationMainActivity.this,MyCircleActivity.class);
+            startActivity(i);
+
 
         } else if (id == R.id.nav_signout) {
 

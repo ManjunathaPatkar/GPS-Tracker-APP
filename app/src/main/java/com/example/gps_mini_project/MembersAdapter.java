@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
-public class MembersAdapter extends RecyclerView.Adapter <MembersAdapter.MembersViewHolder> {
+public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MembersViewHolder> {
     ArrayList<CreateUser> namelist;
     Context c;
     MembersAdapter(ArrayList<CreateUser> namelist, Context c)
@@ -39,7 +39,7 @@ public class MembersAdapter extends RecyclerView.Adapter <MembersAdapter.Members
        MembersViewHolder membersViewHolder=new MembersViewHolder(v,c,namelist);
        
 
-        return null;
+        return membersViewHolder;
     }
 
     @Override

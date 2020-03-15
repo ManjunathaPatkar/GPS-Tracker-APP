@@ -37,8 +37,8 @@ public class JoinCircleActivity extends AppCompatActivity {
         b=(Button)findViewById(R.id.button4);
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
-        currentReference= FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid());
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("users");
+        currentReference= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
         currentUid=user.getUid();
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +54,7 @@ public class JoinCircleActivity extends AppCompatActivity {
                             {
                                 createUser=childDss.getValue(CreateUser.class);
                                 joinCircleuid=createUser.userID;
-                                CircleReference=FirebaseDatabase.getInstance().getReference().child("Users")
+                                CircleReference=FirebaseDatabase.getInstance().getReference().child("users")
                                         .child(joinCircleuid).child("CircleMembers");
 
                                 CircleJoin circleJoin=new CircleJoin(currentUid);
