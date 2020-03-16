@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.559"
         app:srcCompat="@drawable/b" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,6 +39,7 @@
         android:inputType="textPersonName"
         android:text="Manjunatha Patkar"
         android:textAlignment="center"
+        android:editable="false"
         android:textStyle="bold"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,16 +49,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.116" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText5"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_width="214dp"
-        android:layout_height="54dp"
+        android:layout_width="167dp"
+        android:layout_height="21dp"
+        android:editable="false"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
         android:text="4NM17CS100"
+        android:textAlignment="center"
+        android:textStyle="bold"
 
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,12 +69,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.195" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:textAlignment="center"
+        android:editable="false"
         android:textStyle="bold"
         android:gravity="center"
         android:inputType="textPersonName"
@@ -84,12 +87,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:textAlignment="center"
+        android:editable="false"
         android:textStyle="bold"
         android:gravity="center"
         android:inputType="textPersonName"

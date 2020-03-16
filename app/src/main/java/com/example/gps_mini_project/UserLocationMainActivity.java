@@ -225,6 +225,11 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
             Intent intent=new Intent(UserLocationMainActivity.this,ContactUS.class);
             startActivity(intent);
         }
+        else if(id==R.id.nav_viewProfile)
+        {
+            Intent intent=new Intent(UserLocationMainActivity.this,ViewProfile.class);
+            startActivity(intent);
+        }
 
         return true;
     }
