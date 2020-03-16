@@ -220,6 +220,11 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
             }
 
         }
+         else if(id==R.id.nav_contactUs)
+        {
+            Intent intent=new Intent(UserLocationMainActivity.this,ContactUS.class);
+            startActivity(intent);
+        }
 
         return true;
     }
