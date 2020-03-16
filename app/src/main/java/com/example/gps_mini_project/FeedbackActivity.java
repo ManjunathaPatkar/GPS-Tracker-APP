@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,21 +27,22 @@ public class FeedbackActivity extends AppCompatActivity {
     DatabaseReference reference, databaseReference;
     String name, email, message, userId;
     EditText feedback;
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
 
-
+        submit=(Button)findViewById(R.id.button6);
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.child("name").getValue(String.class);
-                String email = dataSnapshot.child("email").getValue(String.class);
+                 name = dataSnapshot.child("name").getValue(String.class);
+                 email = dataSnapshot.child("email").getValue(String.class);
 
             }
 
@@ -48,21 +51,29 @@ public class FeedbackActivity extends AppCompatActivity {
 
             }
         });
-        feedback = (EditText) findViewById(R.id.edit_text);
-        message = feedback.getText().toString();
-        reference = FirebaseDatabase.getInstance().getReference();
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                feedback = (EditText) findViewById(R.id.edit_text);
+                message = feedback.getText().toString();
+                reference = FirebaseDatabase.getInstance().getReference();
 
-        Feedback feedback = new Feedback(email, name, message);
-        user = auth.getCurrentUser();
-        userId = user.getUid();
-        reference.child("feedbac").child(userId).setValue(feedback)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(FeedbackActivity.this, "Feedback sent successfully!!!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+                Feedback feedback = new Feedback(email, name, message);
+                user = auth.getCurrentUser();
+                userId = user.getUid();
+                reference.child("feedback").child(userId).setValue(feedback)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(FeedbackActivity.this, "Feedback sent successfully!!!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+            }
+
+            });
+        }
+
 }

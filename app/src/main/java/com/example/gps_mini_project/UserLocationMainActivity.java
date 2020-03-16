@@ -235,7 +235,7 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
     }
     public void appbarclicked(View view)
     {
-        Intent intent=new Intent(UserLocationMainActivity.this,feedback.class);
+        Intent intent=new Intent(UserLocationMainActivity.this,FeedbackActivity.class);
         startActivity(intent);
 
     }
