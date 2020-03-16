@@ -28,6 +28,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -64,6 +65,7 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
     LocationRequest request;
     LatLng latLng;
     DatabaseReference databaseReference;
+    Task<Void> reference;
     FirebaseUser user;
     String uname,uemail,code;
     TextView t1,t2;
@@ -155,6 +157,19 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
 
         int id = item.getItemId();
         if (id == R.id.nav_joinCircle) {
+//
+            String a= String.valueOf(latLng.latitude);
+            String b= String.valueOf(latLng.longitude);
+            user = auth.getCurrentUser();
+
+
+
+
+          String  userId = user.getUid();
+            reference= FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("lat").setValue(a);
+            reference= FirebaseDatabase.getInstance().getReference().child("users").child(userId).child("lng").setValue(b);
+
+
             Intent i=new Intent(UserLocationMainActivity.this,JoinCircleActivity.class);
             startActivity(i);
             //finish();

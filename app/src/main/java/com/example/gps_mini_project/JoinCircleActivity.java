@@ -70,7 +70,7 @@ public class JoinCircleActivity extends AppCompatActivity {
                                                 }
                                             }
                                         });
-                                currentReference.child(user.getUid()).setValue(circleJoin1)
+                                currentReference.child(joinCircleuid).setValue(circleJoin1)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {

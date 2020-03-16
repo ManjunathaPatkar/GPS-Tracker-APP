@@ -77,7 +77,11 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MembersV
         @Override
         public void onClick(View v) {
 
-            Toast.makeText(c,"You have clicked this user",Toast.LENGTH_SHORT).show();
+            int a = getPosition();
+            CreateUser s=namearrayList.get(a);
+
+
+            Toast.makeText(c, ""+s.name, Toast.LENGTH_SHORT).show();
 
         }
     }
