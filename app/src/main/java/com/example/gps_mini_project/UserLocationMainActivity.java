@@ -233,6 +233,12 @@ public class UserLocationMainActivity extends AppCompatActivity implements Navig
 
         return true;
     }
+    public void appbarclicked(View view)
+    {
+        Intent intent=new Intent(UserLocationMainActivity.this,feedback.class);
+        startActivity(intent);
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

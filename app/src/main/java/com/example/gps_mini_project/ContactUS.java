@@ -2,6 +2,7 @@ package com.example.gps_mini_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -29,29 +30,24 @@ public class ContactUS extends AppCompatActivity {
         i1=(ImageButton)findViewById(R.id.imageButton4);
         l1=(ImageButton)findViewById(R.id.imageButton5);
         g.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("IntentReset")
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(Intent.ACTION_VIEW)
-                        .setType("plain/text")
-                        .setData(Uri.parse("manjunathapatkar150@gmail.com"))
-                        .setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail")
-                        .putExtra(Intent.EXTRA_EMAIL, new String[]{"manjunathapatkar150@gmail.com"})
-                        .putExtra(Intent.EXTRA_SUBJECT, "t")
-                        .putExtra(Intent.EXTRA_TEXT, "hello. Enter your feedback here :-)");
-                startActivity(intent);
+                String id="manjunathapatkar150@gmail.com";
+                Intent i=new Intent(Intent.ACTION_SENDTO);
+                i.setType("text/plain");
+                i.setData(Uri.parse("mailto:"+id));
+                startActivity(i);
             }
         });
         g1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(Intent.ACTION_VIEW)
-                        .setType("plain/text")
-                        .setData(Uri.parse("manukashyap.u.v0@gmail.com"))
-                        .setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail")
-                        .putExtra(Intent.EXTRA_EMAIL, new String[]{"manukashyap.u.v0@gmail.com"})
-                        .putExtra(Intent.EXTRA_SUBJECT, "t")
-                        .putExtra(Intent.EXTRA_TEXT, "hello. Enter your feedback here :-)");
-                startActivity(intent);
+                String id="manukashyap.u.v@gmail.com";
+                Intent i=new Intent(Intent.ACTION_SENDTO);
+                i.setType("text/plain");
+                i.setData(Uri.parse("mailto:"+id));
+                startActivity(i);
             }
         });
         l.setOnClickListener(new View.OnClickListener() {

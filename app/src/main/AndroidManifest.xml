@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewProfile"></activity>
+        <activity android:name=".FeedbackActivity"></activity>
+        <activity android:name=".ViewProfile" />
         <activity android:name=".ContactUS" />
         <activity android:name=".MyCircleActivity" />
         <activity android:name=".JoinCircleActivity" />
