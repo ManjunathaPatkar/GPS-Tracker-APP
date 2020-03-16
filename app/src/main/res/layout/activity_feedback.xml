@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/edit_text"
-        android:layout_width="328dp"
-        android:layout_height="115dp"
+        android:layout_width="327dp"
+        android:layout_height="155dp"
         android:gravity="top"
         android:hint="Enter your feedback here"
         android:inputType="text|textMultiLine"
@@ -22,15 +22,18 @@
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="137dp"
+        android:layout_height="66dp"
+        android:background="#EC407A"
         android:text="@string/submit"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.614" />
+        app:layout_constraintVertical_bias="0.727"
+        android:textSize="17dp"
+        android:textStyle="bold"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
